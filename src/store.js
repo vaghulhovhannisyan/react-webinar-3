@@ -1,6 +1,7 @@
 /**
  * Хранилище состояния приложения
  */
+let id = 8;
 class Store {
   constructor(initState = {}) {
     this.state = initState;
@@ -42,12 +43,13 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
+
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.state.list.length + 1, title: 'Новая запись' }],
+      list: [...this.state.list, { code: id, title: 'Новая запись', click: 0}],
     });
+    id++
   }
-
   /**
    * Удаление записи по коду
    * @param code
@@ -66,9 +68,17 @@ class Store {
   selectItem(code) {
     this.setState({
       ...this.state,
+      // list: this.state.list.map(i => {    
+      //   i.selected = item.selected;
+      //   return i
+      // }),
       list: this.state.list.map(item => {
         if (item.code === code) {
+          this.state.list.map(i=>{
+            i.selected = item.selected;
+            return i})
           item.selected = !item.selected;
+            item.click++
         }
         return item;
       }),
