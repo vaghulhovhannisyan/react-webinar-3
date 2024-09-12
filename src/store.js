@@ -65,20 +65,18 @@ class Store {
    * Выделение записи по коду
    * @param code
    */
+
   selectItem(code) {
     this.setState({
       ...this.state,
-      // list: this.state.list.map(i => {    
-      //   i.selected = item.selected;
-      //   return i
-      // }),
       list: this.state.list.map(item => {
         if (item.code === code) {
           this.state.list.map(i=>{
             i.selected = item.selected;
-            return i})
+            return i
+          })
           item.selected = !item.selected;
-            item.click++
+          item.click++
         }
         return item;
       }),
