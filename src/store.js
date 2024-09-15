@@ -74,12 +74,18 @@ class Store {
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
-          this.state.list.map(i=>{
-            i.selected = item.selected;
-            return i
-          })
-          item.selected = !item.selected;
-          item.click++
+          if (item.selected == 0) {
+            this.state.list.forEach(element => {
+              element.selected = 0;
+            });
+            item.selected = 1;
+            item.click++
+          }else{
+            this.state.list.forEach(element => {
+              element.selected = 0;
+            });
+            item.selected = 0;
+          }
         }
         return item;
       }),

@@ -23,12 +23,14 @@ function App({ store }) {
           {list.map(item => (
             <div key={item.code} className="List-item">
               <div
-                className={'Item' + (item.selected ? ' Item_selected' : '')}
+                className={'Item' + (item.selected == 1 ? ' Item_selected' : '')}
                 onClick={() => store.selectItem(item.code)}
               >
                 <div className="Item-code">{item.code}</div>
-                <div className="Item-title">{item.title}</div>
-                <div className="Item-click">| Выделяли {item.click} {((item.click % 10 == 2 || item.click % 10 == 3 || item.click % 10 == 4) && (item.click != 12 && item.click != 13 && item.click != 14) ? 'раза' : 'раз')}</div>
+                {item.click != 0
+                  ? <div className="Item-title">{item.title} | Выделяли {item.click} {(item.click % 10 == 2 || item.click % 10 == 3 || item.click % 10 == 4) && ( item.click %1e2 != 12 && item.click %1e2 != 13 && item.click %1e2 != 14) ? 'раза' : 'раз'}</div>
+                  : <div className="Item-title">{item.title}</div>
+                }
                 <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
                 </div>
