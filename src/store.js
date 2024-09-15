@@ -1,7 +1,6 @@
 /**
  * Хранилище состояния приложения
  */
-let id = 8;
 class Store {
   constructor(initState = {}) {
     this.state = initState;
@@ -43,12 +42,16 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
-
+    let id = 0;
+    this.state.list.forEach(element => {
+      if (element.code > id) {
+        id = element.code;
+      }
+    });
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: id, title: 'Новая запись', click: 0}],
+      list: [...this.state.list, { code: id + 1, title: 'Новая запись', click: 0}],
     });
-    id++
   }
   /**
    * Удаление записи по коду

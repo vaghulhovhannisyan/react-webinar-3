@@ -6,7 +6,7 @@ import Store from './store.js';
 
 const store = new Store({
   list: [
-    { code: 1, title: 'Название элемента', click: 0},
+    { code: 1, title: 'Название элемента', click: 0}, 
     { code: 2, title: 'Некий объект', click: 0},
     { code: 3, title: 'Заголовок', click: 0},
     { code: 4, title: 'Очень длинное название элемента из семи слов', click: 0},

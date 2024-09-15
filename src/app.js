@@ -28,7 +28,7 @@ function App({ store }) {
               >
                 <div className="Item-code">{item.code}</div>
                 <div className="Item-title">{item.title}</div>
-                <div className="Item-click">| Выделели {item.click} раз</div>
+                <div className="Item-click">| Выделяли {item.click} {((item.click % 10 == 2 || item.click % 10 == 3 || item.click % 10 == 4) && (item.click != 12 && item.click != 13 && item.click != 14) ? 'раза' : 'раз')}</div>
                 <div className="Item-actions">
                   <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
                 </div>
