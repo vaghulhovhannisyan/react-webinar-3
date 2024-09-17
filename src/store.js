@@ -50,7 +50,7 @@ class Store {
     });
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: id + 1, title: 'Новая запись', click: 0}],
+      list: [...this.state.list, { code: id + 1, title: 'Новая запись', click: 0, selected: 0}],
     });
   }
   /**
