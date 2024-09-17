@@ -50,7 +50,11 @@ class Store {
     });
     this.setState({
       ...this.state,
+<<<<<<< Updated upstream
       list: [...this.state.list, { code: id + 1, title: 'Новая запись', click: 0, selected: 0}],
+=======
+      list: [...this.state.list, { code: id + 1, title: 'Новая запись', click: 0}],
+>>>>>>> Stashed changes
     });
   }
   /**
