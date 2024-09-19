@@ -1,0 +1,21 @@
+.List {
+  display: block;
+}
+
+.List-item {
+  border-bottom: 1px dashed #ccc;
+}
+
+.ItemBox {
+  display: flex;
+  justify-content: flex-end;
+  transition: background-color 1s;
+}
+
+.ItemText {
+  padding: 20px 10px;
+}
+
+.Item-actions {
+  padding: 20px 20px 20px 10px;
+}

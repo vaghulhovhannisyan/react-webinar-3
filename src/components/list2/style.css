@@ -1,0 +1,17 @@
+.List-item {
+  border-bottom: 1px dashed #ccc;
+}
+
+.res-item {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+.res-text {
+  margin: 20px;
+}
+
+.res {
+  margin: 20px;
+}

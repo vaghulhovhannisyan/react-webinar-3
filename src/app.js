@@ -1,45 +1,36 @@
-import React from 'react';
-import { createElement } from './utils.js';
-import './styles.css';
+import React, { useCallback } from 'react';
+import List from './components/list';
+import Head from './components/head';
+import PageLayout from './components/page-layout';
 
 /**
  * Приложение
- * @param store {Store} Состояние приложения
+ * @param store {Store} Хранилище состояния приложения
  * @returns {React.ReactElement}
  */
 function App({ store }) {
   const list = store.getState().list;
+  const list2 = store.getState().list2;
+
+  const callbacks = {
+    onAddItem: useCallback(
+      code => {
+        store.addItem(code);
+      },
+      [store],
+    ),
+  };
 
   return (
-    <div className="App">
-      <div className="App-head">
-        <h1>Приложение на чистом JS</h1>
-      </div>
-      <div className="App-controls">
-        <button onClick={() => store.addItem()}>Добавить</button>
-      </div>
-      <div className="App-center">
-        <div className="List">
-          {list.map(item => (
-            <div key={item.code} className="List-item">
-              <div
-                className={'Item' + (item.selected == 1 ? ' Item_selected' : '')}
-                onClick={() => store.selectItem(item.code)}
-              >
-                <div className="Item-code">{item.code}</div>
-                {item.click != 0
-                  ? <div className="Item-title">{item.title} | Выделяли {item.click} {(item.click % 10 == 2 || item.click % 10 == 3 || item.click % 10 == 4) && ( item.click %1e2 != 12 && item.click %1e2 != 13 && item.click %1e2 != 14) ? 'раза' : 'раз'}</div>
-                  : <div className="Item-title">{item.title}</div>
-                }
-                <div className="Item-actions">
-                  <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <PageLayout>
+      <Head title='Магазин'/>
+      <List
+        store={store}
+        list={list}
+        list2={list2}
+        onAddItem={callbacks.onAddItem}
+      />
+    </PageLayout>
   );
 }
 

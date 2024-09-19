@@ -39,56 +39,42 @@ class Store {
   }
 
   /**
-   * Добавление новой записи
-   */
-  addItem() {
-    let id = 0;
-    this.state.list.forEach(element => {
-      if (element.code > id) {
-        id = element.code;
-      }
-    });
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, { code: id + 1, title: 'Новая запись', click: 0, selected: 0}],
-    });
-  }
-  /**
-   * Удаление записи по коду
-   * @param code
-   */
-  deleteItem(code) {
-    this.setState({
-      ...this.state,
-      list: this.state.list.filter(item => item.code !== code),
-    });
-  }
-
-  /**
    * Выделение записи по коду
    * @param code
    */
+  addItem(code) {
+    let item = this.state.list.find(item => item.code == code)
+    let id = 0
+    this.state.list2.forEach(element => {
+      if (element.code == code) {
+        id++
+      }
+    });
+    if (id>0) {
+      this.state.list2.forEach(element => {
+        if (element.code == code) {
+          this.setState({
+            ...this.state,
+            list2: this.state.list2.filter(item => item.code !== code),
+          });
+          this.setState({
+            ...this.state,
+            list2: [...this.state.list2, { code: element.code, title: element.title, price: element.price, sum: element.sum + 1}],
+          });
+        }
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        list2: [...this.state.list2, { code: item.code, title: item.title, price: item.price, sum: 1}],
+      });
+    }
+  }
 
-  selectItem(code) {
+  deleteItem(code){
     this.setState({
       ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          if (item.selected == 0) {
-            this.state.list.forEach(element => {
-              element.selected = 0;
-            });
-            item.selected = 1;
-            item.click++
-          }else{
-            this.state.list.forEach(element => {
-              element.selected = 0;
-            });
-            item.selected = 0;
-          }
-        }
-        return item;
-      }),
+      list2: this.state.list2.filter(item => item.code !== code),
     });
   }
 }
