@@ -1,0 +1,30 @@
+.Item {
+  display: flex;
+  justify-content: flex-start;
+  transition: background-color 1s;
+}
+
+.Item-code {
+  padding: 20px 10px 20px 20px;
+}
+
+.Item-title {
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.Item-price {
+  width: 100%;
+  margin: 20px;
+}
+
+.Item-sum {
+  width: 20%;
+  margin: 20px;
+}
+
+.Item-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 20px 10px;
+}

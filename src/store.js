@@ -1,5 +1,3 @@
-import { generateCode } from './utils';
-
 /**
  * Хранилище состояния приложения
  */
@@ -41,46 +39,42 @@ class Store {
   }
 
   /**
-   * Добавление новой записи
-   */
-  addItem() {
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, { code: generateCode(), title: 'Новая запись' }],
-    });
-  }
-
-  /**
-   * Удаление записи по коду
-   * @param code
-   */
-  deleteItem(code) {
-    this.setState({
-      ...this.state,
-      // Новый список, в котором не будет удаляемой записи
-      list: this.state.list.filter(item => item.code !== code),
-    });
-  }
-
-  /**
    * Выделение записи по коду
    * @param code
    */
-  selectItem(code) {
+  addItem(code) {
+    let item = this.state.list.find(item => item.code == code)
+    let id = 0
+    this.state.list2.forEach(element => {
+      if (element.code == code) {
+        id++
+      }
+    });
+    if (id>0) {
+      this.state.list2.forEach(element => {
+        if (element.code == code) {
+          this.setState({
+            ...this.state,
+            list2: this.state.list2.filter(item => item.code !== code),
+          });
+          this.setState({
+            ...this.state,
+            list2: [...this.state.list2, { code: element.code, title: element.title, price: element.price, sum: element.sum + 1}],
+          });
+        }
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        list2: [...this.state.list2, { code: item.code, title: item.title, price: item.price, sum: 1}],
+      });
+    }
+  }
+
+  deleteItem(code){
     this.setState({
       ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          // Смена выделения и подсчёт
-          return {
-            ...item,
-            selected: !item.selected,
-            count: item.selected ? item.count : item.count + 1 || 1,
-          };
-        }
-        // Сброс выделения если выделена
-        return item.selected ? { ...item, selected: false } : item;
-      }),
+      list2: this.state.list2.filter(item => item.code !== code),
     });
   }
 }

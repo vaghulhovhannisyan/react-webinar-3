@@ -2,38 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
-function Item(props) {
+function Item2(props) {
   const callbacks = {
-    onAdd: e => {
+    onDelete: e => {
       e.stopPropagation();
-      props.onAdd(props.item.code);
+      props.onDelete(props.item.code);
     },
   };
-
   return (
     <div className='Item'>
       <div className="Item-code">{props.item.code}</div>
       <div className="Item-title">{props.item.title}</div>
       <div className="Item-price">{props.item.price} ₽</div>
+      <div className="Item-sum">{props.item.sum} шт</div>
       <div className="Item-actions">
-        <button onClick={callbacks.onAdd}>Добавить</button>
+        <button onClick={callbacks.onDelete}>Удалить</button>
       </div>
     </div>
   );
 }
 
-Item.propTypes = {
+Item2.propTypes = {
   item: PropTypes.shape({
     code: PropTypes.number,
     title: PropTypes.string,
     selected: PropTypes.bool,
     count: PropTypes.number,
   }).isRequired,
-  onAdd: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
-Item.defaultProps = {
-  onAdd: () => {},
+Item2.defaultProps = {
+  onDelete: () => {},
 };
 
-export default React.memo(Item);
+export default React.memo(Item2);
