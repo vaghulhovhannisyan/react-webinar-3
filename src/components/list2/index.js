@@ -27,6 +27,7 @@ List2.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number,
+      price: PropTypes.number,
     }),
   ).isRequired,
   onDeleteItem: PropTypes.func,

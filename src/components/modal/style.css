@@ -1,0 +1,14 @@
+.Item {
+  display: flex;
+  justify-content: flex-start;
+  transition: background-color 1s;
+}
+
+.Item-price{
+  text-align: right;
+}
+
+.Item-actions {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -10,12 +10,33 @@
   display: flex;
   justify-content: flex-end;
   transition: background-color 1s;
+  margin-right: 16px;
 }
 
 .ItemText {
   padding: 20px 10px;
+  padding-right: 20px;
 }
 
-.Item-actions {
-  padding: 20px 20px 20px 10px;
+.ItemButton {
+  padding: 20px 10px;
+}
+
+.Modal {
+  width: 950px;
+  border-radius: 10px;
+  border-color: white;
+}
+
+.ModalTitle {
+  display: flex;
+  padding-bottom: 20px;
+  margin-left: 20px;
+}
+
+.ModalButton {
+  margin-right: 20px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 630px;
 }
