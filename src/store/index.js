@@ -17,6 +17,12 @@ class Store {
       this.actions[name] = new modules[name](this, name);
       this.state[name] = this.actions[name].initState();
     }
+
+    // this.action = {};
+    // for (const name of Object.keys(links)) {
+    //   this.action[name] = new links[name](this, name);
+    //   this.state[name] = this.action[name].initState();
+    // }
   }
 
   /**

@@ -28,3 +28,13 @@
   font-size: 18px;
   white-space: nowrap;
 }
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+a:hover{
+  color: black;
+  text-decoration: underline;
+}
