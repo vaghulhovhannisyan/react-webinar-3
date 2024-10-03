@@ -18,6 +18,7 @@ function CatalogList() {
     page: state.catalog.params.page,
     limit: state.catalog.params.limit,
     sort: state.catalog.params.sort,
+    sort2: state.catalog.params.sort2,
     query: state.catalog.params.query,
     count: state.catalog.count,
     waiting: state.catalog.waiting,
@@ -35,10 +36,11 @@ function CatalogList() {
           page,
           limit: select.limit,
           sort: select.sort,
+          sort2: select.sort2,
           query: select.query,
         })}`;
       },
-      [select.limit, select.sort, select.query],
+      [select.limit, select.sort, select.sort2, select.query],
     ),
   };
 

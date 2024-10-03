@@ -4,6 +4,8 @@ import useSelector from '../hooks/use-selector';
 import Main from './main';
 import Basket from './basket';
 import Article from './article';
+import Login from './login';
+import Sign from '../components/sign';
 
 /**
  * Приложение
@@ -17,6 +19,8 @@ function App() {
       <Routes>
         <Route path={''} element={<Main />} />
         <Route path={'/articles/:id'} element={<Article />} />
+        <Route path={'/login'} element={<Login />} />
+        <Route path={'/sign'} element={<Sign />} />
       </Routes>
 
       {activeModal === 'basket' && <Basket />}

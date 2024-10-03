@@ -1,31 +1,19 @@
-import { memo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import useStore from '../../hooks/use-store';
+import useSelector from '../../hooks/use-selector';
 import useTranslate from '../../hooks/use-translate';
 import useInit from '../../hooks/use-init';
-import Navigation from '../../containers/navigation';
 import PageLayout from '../../components/page-layout';
 import Head from '../../components/head';
-import CatalogFilter from '../../containers/catalog-filter';
-import CatalogList from '../../containers/catalog-list';
+import Navigation from '../../containers/navigation';
 import LocaleSelect from '../../containers/locale-select';
+import Password from '../../components/password'
+import Sign from '../../components/sign'
 import { Link } from 'react-router-dom';
 
-/**
- * Главная страница - первичная загрузка каталога
- */
-function Main() {
-  const store = useStore();
-
-  useInit(
-    () => {
-      store.actions.catalog.initParams();
-    },
-    [],
-    true,
-  );
-
-  const { t } = useTranslate();
-
+function Login() {
+  const { t } = useTranslate();  
   return (
     <PageLayout>
       <Link to='/login'><button style={{marginLeft:'950px', marginTop:'10px', marginBottom:'10px'}}>Вход</button></Link>
@@ -33,10 +21,13 @@ function Main() {
         <LocaleSelect />
       </Head>
       <Navigation />
-      <CatalogFilter />
-      <CatalogList />
+      {/* {list.length>0
+      ? <Sign/>
+      : 
+      } */}
+      <Password />
     </PageLayout>
   );
 }
 
-export default memo(Main);
+export default memo(Login);

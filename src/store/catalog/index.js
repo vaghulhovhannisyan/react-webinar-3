@@ -14,7 +14,8 @@ class CatalogState extends StoreModule {
       params: {
         page: 1,
         limit: 10,
-        sort: 'order',
+        sort: '',
+        sort2: 'order',
         query: '',
       },
       count: 0,
@@ -35,6 +36,7 @@ class CatalogState extends StoreModule {
     if (urlParams.has('limit'))
       validParams.limit = Math.min(Number(urlParams.get('limit')) || 10, 50);
     if (urlParams.has('sort')) validParams.sort = urlParams.get('sort');
+    if (urlParams.has('sort2')) validParams.sort2 = urlParams.get('sort2');
     if (urlParams.has('query')) validParams.query = urlParams.get('query');
     await this.setParams({ ...this.initState().params, ...validParams, ...newParams }, true);
   }
@@ -83,7 +85,8 @@ class CatalogState extends StoreModule {
       limit: params.limit,
       skip: (params.page - 1) * params.limit,
       fields: 'items(*),count',
-      sort: params.sort,
+      'search[category]': params.sort,
+      sort2: params.sort2,
       'search[query]': params.query,
     };
 
