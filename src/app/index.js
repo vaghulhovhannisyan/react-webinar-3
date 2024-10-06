@@ -6,6 +6,7 @@ import Basket from './basket';
 import Article from './article';
 import Login from './login';
 import Sign from '../components/sign';
+import Password from '../components/password';
 
 /**
  * Приложение
@@ -20,7 +21,8 @@ function App() {
         <Route path={''} element={<Main />} />
         <Route path={'/articles/:id'} element={<Article />} />
         <Route path={'/login'} element={<Login />} />
-        <Route path={'/sign'} element={<Sign />} />
+        <Route path={'/password'} element={<Password />} />
+        <Route path={'/profile'} element={<Sign />} />
       </Routes>
 
       {activeModal === 'basket' && <Basket />}

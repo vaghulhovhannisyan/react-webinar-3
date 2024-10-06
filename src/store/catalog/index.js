@@ -14,7 +14,7 @@ class CatalogState extends StoreModule {
       params: {
         page: 1,
         limit: 10,
-        sort: '',
+        sort: '670260bb7dd498df5525e5ce||670260bb7dd498df5525e5d2',
         sort2: 'order',
         query: '',
       },

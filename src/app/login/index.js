@@ -16,16 +16,11 @@ function Login() {
   const { t } = useTranslate();  
   return (
     <PageLayout>
-      <Link to='/login'><button style={{marginLeft:'950px', marginTop:'10px', marginBottom:'10px'}}>Вход</button></Link>
-      <Head title={t('title')}>
-        <LocaleSelect />
-      </Head>
-      <Navigation />
-      {/* {list.length>0
+      {localStorage.getItem('signState')=='1'
       ? <Sign/>
-      : 
-      } */}
-      <Password />
+      : <Password />
+      }
+      
     </PageLayout>
   );
 }
